@@ -1,5 +1,5 @@
-console.log("OK");
-require("dotenv").config();
+console.log("Initializing".yellow);
+
 const {
   onDisconnectedHandler,
   onConnectedHandler,
@@ -101,7 +101,12 @@ client.on(
   }
 );
 
+//Twitch Mod Check;
+//client.isMod()
+
 client.on("part", (channel, username) => {
   // Do your stuff.
   onPart(client, channel, username);
 });
+
+console.log("So far so good".green);

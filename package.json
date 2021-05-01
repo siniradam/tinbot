@@ -4,7 +4,8 @@
   "description": "Tinman bot for twitch",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "twitch",
@@ -17,6 +18,7 @@
   "author": "Koray K <koray@ohshiftlabs.com>",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "mongoose": "^5.12.7",
     "tmi.js": "^1.8.3"
