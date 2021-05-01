@@ -55,7 +55,7 @@ exports.onDisconnectedHandler = (reason) => {
 };
 
 exports.onConnectedHandler = (address, port) => {
-  console.log(`Connected: ${address}:${port}`);
+  console.log(`Tinbot Connected to Twitch on ${address}:${port}`.magenta);
 };
 
 exports.onHostedHandler = (client, channel, username, viewers, autohost) => {
@@ -134,4 +134,10 @@ exports.subGiftHandler = (
 
 exports.onPart = (client, channel, username) => {
   client.say(channel, getMessage(channel, S.JUSTLEFT, username));
+};
+
+exports.onTwitchConnect = (DiscordClient) => {
+  console.log(
+    `${DiscordClient.user.username} connected to Discord`.brightMagenta
+  );
 };

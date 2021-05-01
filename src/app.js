@@ -13,10 +13,16 @@ const {
   subGiftHandler,
   reconnectHandler,
   onPart,
+  onTwitchConnect,
 } = require("./events");
 
 const { messageHandler } = require("./messages");
 
+//Discord Library
+const { Client } = require("discord.js");
+const DiscordClient = new Client();
+
+//Twitch Library
 const tmi = require("tmi.js");
 const options = {
   options: {
@@ -35,62 +41,84 @@ const options = {
   },
   channels: ["tinmank", "tutkuyildirim"],
 };
-const client = new tmi.Client(options);
+const TwitchClient = new tmi.Client(options);
 
-client.connect().catch(console.error);
+//Twitch Definitions
+TwitchClient.connect().catch(console.error);
 
 /*Twitch Connection Methods */
-client.on("disconnected", (reason) => {
+TwitchClient.on("disconnected", (reason) => {
   onDisconnectedHandler(reason);
 });
 
-client.on("connected", (address, port) => {
+TwitchClient.on("connected", (address, port) => {
   onConnectedHandler(address, port);
 });
 
 /* Twitch Message Handling. */
-client.on("message", (channel, tags, message, self) => {
-  messageHandler(client, channel, tags, message, self);
+TwitchClient.on("message", (channel, tags, message, self) => {
+  messageHandler(TwitchClient, channel, tags, message, self);
 });
 
 /* Twitch EVENTS */
-client.on("hosted", (channel, username, viewers, autohost) => {
-  onHostedHandler(client, channel, username, viewers, autohost);
+TwitchClient.on("hosted", (channel, username, viewers, autohost) => {
+  onHostedHandler(TwitchClient, channel, username, viewers, autohost);
 });
 
-client.on("subscription", (channel, username, method, message, userstate) => {
-  onSubscriptionHandler(client, channel, username, method, message, userstate);
+TwitchClient.on(
+  "subscription",
+  (channel, username, method, message, userstate) => {
+    onSubscriptionHandler(
+      TwitchClient,
+      channel,
+      username,
+      method,
+      message,
+      userstate
+    );
+  }
+);
+
+TwitchClient.on("raided", (channel, username, viewers) => {
+  onRaidedHandler(TwitchClient, channel, username, viewers);
 });
 
-client.on("raided", (channel, username, viewers) => {
-  onRaidedHandler(client, channel, username, viewers);
+TwitchClient.on("cheer", (channel, userstate, message) => {
+  onCheerHandler(TwitchClient, channel, userstate, message);
 });
 
-client.on("cheer", (channel, userstate, message) => {
-  onCheerHandler(client, channel, userstate, message);
+TwitchClient.on("giftpaidupgrade", (channel, username, sender, userstate) => {
+  onGiftPaidUpgradeHandler(TwitchClient, channel, username, sender, userstate);
 });
 
-client.on("giftpaidupgrade", (channel, username, sender, userstate) => {
-  onGiftPaidUpgradeHandler(client, channel, username, sender, userstate);
+TwitchClient.on("hosting", (channel, target, viewers) => {
+  onHostingHandler(TwitchClient, channel, target, viewers);
 });
 
-client.on("hosting", (channel, target, viewers) => {
-  onHostingHandler(client, channel, target, viewers);
-});
-
-client.on("reconnect", () => {
+TwitchClient.on("reconnect", () => {
   reconnectHandler();
 });
 
-client.on("resub", (channel, username, months, message, userstate, methods) => {
-  resubHandler(client, channel, username, months, message, userstate, methods);
-});
+TwitchClient.on(
+  "resub",
+  (channel, username, months, message, userstate, methods) => {
+    resubHandler(
+      TwitchClient,
+      channel,
+      username,
+      months,
+      message,
+      userstate,
+      methods
+    );
+  }
+);
 
-client.on(
+TwitchClient.on(
   "subgift",
   (channel, username, streakMonths, recipient, methods, userstate) => {
     subGiftHandler(
-      client,
+      TwitchClient,
       channel,
       username,
       streakMonths,
@@ -102,11 +130,32 @@ client.on(
 );
 
 //Twitch Mod Check;
-//client.isMod()
+//TwitchClient.isMod()
 
-client.on("part", (channel, username) => {
+TwitchClient.on("part", (channel, username) => {
   // Do your stuff.
-  onPart(client, channel, username);
+  onPart(TwitchClient, channel, username);
 });
+
+//Discord Definitions
+DiscordClient.on("ready", () => {
+  onTwitchConnect(DiscordClient);
+});
+
+DiscordClient.on("message", (message) => {
+  messageHandler(
+    message,
+    message.channel.general,
+    {
+      username: message.author.username,
+      bot: message.author.bot,
+      "display-name": message.author.username,
+      type: message.type,
+    },
+    message.content,
+    message.author.bot
+  );
+});
+DiscordClient.login(process.env.DISCORD_TOKEN);
 
 console.log("So far so good".green);

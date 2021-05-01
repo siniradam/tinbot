@@ -2,6 +2,7 @@
 
 const { apex } = require("./platforms/apex");
 const { steam } = require("./platforms/steam");
+const { reply } = require("./utils/reply");
 
 exports.messageHandler = (client, channel, tags, message, self) => {
   if (self) return;
@@ -19,24 +20,26 @@ exports.messageHandler = (client, channel, tags, message, self) => {
       case "hello":
       case "hi":
       case "howdy":
-        client.say(channel, sayHi(tags.username));
+        reply(client, channel, sayHi(tags.username));
         break;
 
       case "saat":
-        client.say(channel, sayTime());
+      case "time":
+        reply(client, channel, sayTime());
 
         break;
 
       case "apex":
-        apex(param1, param2, (text) => {
-          client.say(channel, text);
-        });
+        apex({ username: tags.username, channel, client }, param1, param2);
         break;
 
       case "steam":
-        steam(param1, param2, (text) => {
-          client.say(channel, text);
-        });
+        steam({ username: tags.username, channel, client }, param1, param2);
+        break;
+
+      case "dice":
+        rollTheDice({ username: tags.username, channel, client }, param1);
+
         break;
 
       default:
@@ -76,4 +79,8 @@ function sayTime() {
     currentdate.getSeconds();
 
   return datetime;
+}
+
+function rollTheDice({ username, channel, client }, diceNumber) {
+  client.say(channel, `@${username} ${Math.floor(Math.random() * diceNumber)}`);
 }
