@@ -47,13 +47,13 @@ exports.messageHandler = (client, channel, tags, message, self) => {
     }
   } else {
     if (message === "!hello") {
-      client.say(channel, `@${tags.username}, heya!`);
+      reply(client, channel, `@${tags.username}, heya!`);
       //
     } else if (message === "!tinbot") {
-      client.say(channel, `@${tags.username}, beep boop!`);
+      reply(client, channel, `@${tags.username}, beep boop!`);
       //
     } else if (message.indexOf("tinman") !== -1) {
-      client.say(channel, `@${tags.username}, 🙋🏻‍♂️`);
+      reply(client, channel, `@${tags.username}, 🙋🏻‍♂️`);
       //
     }
   }
@@ -82,5 +82,9 @@ function sayTime() {
 }
 
 function rollTheDice({ username, channel, client }, diceNumber) {
-  client.say(channel, `@${username} ${Math.floor(Math.random() * diceNumber)}`);
+  reply(
+    client,
+    channel,
+    `@${username} ${Math.floor(Math.random() * diceNumber)}`
+  );
 }
