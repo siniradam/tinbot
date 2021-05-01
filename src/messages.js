@@ -47,13 +47,19 @@ exports.messageHandler = (client, channel, tags, message, self) => {
     }
   } else {
     if (message === "!hello") {
-      reply(client, channel, `@${tags.username}, heya!`);
+      reply(client, channel, `@${tags.username} heya!`);
       //
     } else if (message === "!tinbot") {
-      reply(client, channel, `@${tags.username}, beep boop!`);
+      reply(client, channel, `@${tags.username} beep boop!`);
       //
     } else if (message.indexOf("tinman") !== -1) {
-      reply(client, channel, `@${tags.username}, 🙋🏻‍♂️`);
+      if (client.say) {
+        //Twitch
+        client.say(channel, "👋");
+      } else if (client.reply) {
+        //Discord
+        client.react("👋");
+      }
       //
     }
   }
