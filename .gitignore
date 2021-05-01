@@ -1,0 +1,10 @@
+node_modules
+dist
+.idea
+.vscode
+.tmp
+.DS_Store
+temp
+.log
+docs
+.env
