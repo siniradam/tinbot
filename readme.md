@@ -16,7 +16,11 @@ Tinbot replies your chat commands.
 - 🧭 !valorant _username_ - Valorant player info
 - 🧭 !lol _username_ - League of Legends player info
 - 🧭 !dota _username_ - Defense of the Ancients (DOTA) player info
-- 🤨 !minecraft
+- 🧭 !overwatch _username_ - Overwatch player info
+- 🤨 !minecraft - Minecraft
+- 🤨 !hearthstone - Hearthstone
+- 🤨 !sc2 - StarCraft2
+- 🤨 !igd - Internet Game Database
 
 ### Legends;
 - ✅ = Completed
