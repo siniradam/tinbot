@@ -14,6 +14,9 @@ const {
   reconnectHandler,
   onPart,
   onTwitchConnect,
+  onTwitchConnectionError,
+  onTwitchReconnecting,
+  onTwitchReconnected,
 } = require("./events");
 
 const { messageHandler } = require("./messages");
@@ -134,12 +137,24 @@ TwitchClient.on(
 
 TwitchClient.on("part", (channel, username) => {
   // Do your stuff.
-  onPart(TwitchClient, channel, username);
+  //onPart(TwitchClient, channel, username);
 });
 
 //Discord Definitions
 DiscordClient.on("ready", () => {
   onTwitchConnect(DiscordClient);
+});
+
+DiscordClient.on("shardError", () => {
+  onTwitchConnectionError(DiscordClient);
+});
+
+DiscordClient.on("shardReconnecting", () => {
+  onTwitchReconnecting(DiscordClient);
+});
+
+DiscordClient.on("shardResume", () => {
+  onTwitchReconnected(DiscordClient);
 });
 
 DiscordClient.on("message", (message) => {
@@ -156,6 +171,7 @@ DiscordClient.on("message", (message) => {
     message.author.bot
   );
 });
+
 DiscordClient.login(process.env.DISCORD_TOKEN);
 
 console.log("So far so good".green);

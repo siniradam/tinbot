@@ -132,12 +132,24 @@ exports.subGiftHandler = (
   client.say(channel, m);
 };
 
-exports.onPart = (client, channel, username) => {
-  client.say(channel, getMessage(channel, S.JUSTLEFT, username));
-};
+// exports.onPart = (client, channel, username) => {
+//   client.say(channel, getMessage(channel, S.JUSTLEFT, username));
+// };
 
 exports.onTwitchConnect = (DiscordClient) => {
   console.log(
     `${DiscordClient.user.username} connected to Discord`.brightMagenta
   );
+};
+
+exports.onTwitchConnectionError = (DiscordClient) => {
+  console.log(`${DiscordClient.user.username} Connection error`.brightMagenta);
+};
+
+exports.onTwitchReconnecting = (DiscordClient) => {
+  console.log(`${DiscordClient.user.username} reconnecting`.brightMagenta);
+};
+
+exports.onTwitchReconnected = (DiscordClient) => {
+  console.log(`${DiscordClient.user.username} reconnecting`.brightMagenta);
 };
