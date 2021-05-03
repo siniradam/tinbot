@@ -38,6 +38,11 @@ const sentences = {
 function getMessage(channel, sentence, var1, var2, var3) {
   let lang = channel == "#tutkuyildirim" ? "tr" : "en";
   let toSend = sentences[lang][sentence];
+  if (!toSend) {
+    console.log(lang, sentence);
+    return;
+  }
+
   if (var1) {
     toSend = toSend.replace("variable1", var1);
   }

@@ -42,7 +42,7 @@ const options = {
     username: process.env.USERNAME,
     password: `oauth:${process.env.TOKEN}`,
   },
-  channels: ["tinmank", "tutkuyildirim"],
+  channels: process.env.TWITCH_CHANNELS.split(","),
 };
 const TwitchClient = new tmi.Client(options);
 

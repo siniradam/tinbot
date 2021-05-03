@@ -2,17 +2,16 @@
 
 const { apex } = require("./platforms/apex");
 const { steam } = require("./platforms/steam");
+const { pubg } = require("./platforms/pubg");
 const { reply } = require("./utils/reply");
 
 exports.messageHandler = (client, channel, tags, message, self) => {
   if (self) return;
 
-  message = message.toLowerCase();
-
   if (message.slice(0, 1) == "!") {
     message = message.slice(1).trim();
     messageData = message.split(/\s+/);
-    let command = messageData[0];
+    let command = messageData[0].toLowerCase();
     let param1 = messageData[1];
     let param2 = messageData[2];
 
@@ -23,7 +22,7 @@ exports.messageHandler = (client, channel, tags, message, self) => {
         reply(client, channel, sayHi(tags.username));
         break;
 
-      case "saat":
+      //      case "saat":
       case "time":
         reply(client, channel, sayTime());
 
@@ -37,9 +36,21 @@ exports.messageHandler = (client, channel, tags, message, self) => {
         steam({ username: tags.username, channel, client }, param1, param2);
         break;
 
+      case "pubg":
+        pubg({ username: tags.username, channel, client }, param1, param2);
+        break;
+
       case "dice":
         rollTheDice({ username: tags.username, channel, client }, param1);
 
+        break;
+
+      case "commands":
+        reply(
+          client,
+          channel,
+          "For commands please go to https://siniradam.github.io/tinbot/"
+        );
         break;
 
       default:

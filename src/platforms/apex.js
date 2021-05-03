@@ -46,6 +46,7 @@ exports.apex = ({ username, channel, client }, param1, param2) => {
 
 const platforms = {
   steam: "PC",
+  origin: "PC",
   psn: "PS4",
   xbox: "X1",
   stadia: "",

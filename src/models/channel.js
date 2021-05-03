@@ -6,6 +6,8 @@ const ChannelDataSchema = mongoose.Schema({
     required: true,
   },
   channel: String,
+  command: String,
+  response: String,
   language: String,
 });
 
