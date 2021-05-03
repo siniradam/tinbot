@@ -42,3 +42,5 @@ Tinbot replies your chat commands.
 ---
 
 Koray K. https://ohshift.io
+Would you like to buy me a beer? Venmo Me:
+![Venmo](https://siniradam.github.io/tinbot/assets/img/venmo.png)
