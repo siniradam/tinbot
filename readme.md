@@ -4,6 +4,7 @@ Tinbot replies your chat commands.
 
 ## Usage
 
+- !commands: Returns readme page.
 - ✅ !dice n
 - ✅ !apex _platform_ _pcusername_ - Apex Legends player info
 - ✅ !apex _platform_ _pcusername_ status - Returns if player is currently playing Apex Legends
@@ -32,6 +33,7 @@ Tinbot replies your chat commands.
 - xbox
 - psn
 - steam
+
 
 
 ## Todo
