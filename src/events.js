@@ -156,5 +156,5 @@ exports.onTwitchReconnecting = (DiscordClient) => {
 };
 
 exports.onTwitchReconnected = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} reconnecting`.brightMagenta);
+  console.log(`${DiscordClient.user.username} reconnected`.brightMagenta);
 };

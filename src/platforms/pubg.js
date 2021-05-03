@@ -23,6 +23,11 @@ const platforms = {
  * @description Default PUBG Method.
  */
 exports.pubg = ({ username, channel, client }, platform, player) => {
+  if (!platform || !player) {
+    reply(client, channel, `@${username} Please type platform and username`);
+    return;
+  }
+
   lifteTimeStats(platform, player, (LTStats) => {
     if (LTStats) {
       let response = `@${username} ${player} alltime PUBG stats: \nSquad Kills: ${LTStats.squad.kills}, Squad Wins: ${LTStats.squad.wins}`;

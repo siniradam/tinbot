@@ -4,6 +4,7 @@ const { apex } = require("./platforms/apex");
 const { steam } = require("./platforms/steam");
 const { pubg } = require("./platforms/pubg");
 const { reply } = require("./utils/reply");
+const { fortnite } = require("./platforms/fortnite");
 
 exports.messageHandler = (client, channel, tags, message, self) => {
   if (self) return;
@@ -38,6 +39,10 @@ exports.messageHandler = (client, channel, tags, message, self) => {
 
       case "pubg":
         pubg({ username: tags.username, channel, client }, param1, param2);
+        break;
+
+      case "fortnite":
+        fortnite({ username: tags.username, channel, client }, param1, param2);
         break;
 
       case "dice":

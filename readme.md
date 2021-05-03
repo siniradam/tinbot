@@ -9,7 +9,7 @@ Tinbot replies your chat commands.
 - ✅ !apex _platform_ _pcusername_ - Apex Legends player info
 - ✅ !apex _platform_ _pcusername_ status - Returns if player is currently playing Apex Legends
 - ✅ !pubg _platform_ _username_ - PUBG player info
-- ⏳ !fortnite _username_ - Fortnite player info 
+- ✅ !fortnite _username_ - Fortnite player info 
 - ⏳ !warzone _username_ - COD:Warzone player info
 - ⏳ !steam userid - Basic user info
 - ⏳ !steam username who - Returns SteamId
