@@ -23,6 +23,7 @@ Tinbot replies your chat commands.
 - 🤨 !sc2 - StarCraft2
 - 🤨 !igd - Internet Game Database
 - ✅ !coin - Check coin price (bitcoin, dogecoin, ethereum ...) type full name no-space
+- ✅ !pick comma,seperated,words - Picks a word from a comma seperated string.
 
 ### Legends;
 - ✅ = Completed

@@ -52,7 +52,10 @@ exports.messageHandler = (client, channel, tags, message, self) => {
 
       case "dice":
         rollTheDice({ username: tags.username, channel, client }, param1);
+        break;
 
+      case "pick":
+        pickWord({ username: tags.username, channel, client }, param1);
         break;
 
       case "commands":
@@ -109,9 +112,22 @@ function sayTime() {
 }
 
 function rollTheDice({ username, channel, client }, diceNumber) {
-  reply(
-    client,
-    channel,
-    `@${username} ${Math.floor(Math.random() * diceNumber)}`
-  );
+  if (diceNumber) {
+    reply(
+      client,
+      channel,
+      `@${username} Rolled ${Math.floor(Math.random() * parseInt(diceNumber))}`
+    );
+  } else {
+    reply(client, channel, `@${username} Command usage: !dice n`);
+  }
+}
+
+function pickWord({ username, channel, client }, words) {
+  if (words) {
+    let items = words.split(",");
+    let winner = items[(items.length * Math.random()) | 0];
+
+    reply(client, channel, `@${username} I pick ${winner}`);
+  }
 }
