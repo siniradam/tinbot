@@ -107,7 +107,7 @@ exports.onHostingHandler = (client, channel, target, viewers) => {
 };
 
 exports.reconnectHandler = () => {
-  console.log("Reconnecting...");
+  console.log("Reconnecting...".magenta);
 };
 
 exports.resubHandler = (
@@ -141,20 +141,20 @@ exports.subGiftHandler = (
 //   client.say(channel, getMessage(channel, S.JUSTLEFT, username));
 // };
 
-exports.onTwitchConnect = (DiscordClient) => {
+exports.onDiscordConnect = (DiscordClient) => {
   console.log(
     `${DiscordClient.user.username} connected to Discord`.brightMagenta
   );
 };
 
-exports.onTwitchConnectionError = (DiscordClient) => {
+exports.onDiscordConnectionError = (DiscordClient) => {
   console.log(`${DiscordClient.user.username} Connection error`.brightMagenta);
 };
 
-exports.onTwitchReconnecting = (DiscordClient) => {
+exports.onDiscordReconnecting = (DiscordClient) => {
   console.log(`${DiscordClient.user.username} reconnecting`.brightMagenta);
 };
 
-exports.onTwitchReconnected = (DiscordClient) => {
+exports.onDiscordReconnected = (DiscordClient) => {
   console.log(`${DiscordClient.user.username} reconnected`.brightMagenta);
 };

@@ -1,6 +1,7 @@
 console.log("Initializing".yellow);
 
 const {
+  //Twitch
   onDisconnectedHandler,
   onConnectedHandler,
   onHostedHandler,
@@ -13,10 +14,11 @@ const {
   subGiftHandler,
   reconnectHandler,
   onPart,
-  onTwitchConnect,
-  onTwitchConnectionError,
-  onTwitchReconnecting,
-  onTwitchReconnected,
+  //Discord
+  onDiscordConnect,
+  onDiscordConnectionError,
+  onDiscordReconnecting,
+  onDiscordReconnected,
 } = require("./events");
 
 const { messageHandler } = require("./messages");
@@ -142,19 +144,19 @@ TwitchClient.on("part", (channel, username) => {
 
 //Discord Definitions
 DiscordClient.on("ready", () => {
-  onTwitchConnect(DiscordClient);
+  onDiscordConnect(DiscordClient);
 });
 
 DiscordClient.on("shardError", () => {
-  onTwitchConnectionError(DiscordClient);
+  onDiscordConnectionError(DiscordClient);
 });
 
 DiscordClient.on("shardReconnecting", () => {
-  onTwitchReconnecting(DiscordClient);
+  onDiscordReconnecting(DiscordClient);
 });
 
-DiscordClient.on("shardResume", () => {
-  onTwitchReconnected(DiscordClient);
+DiscordClient.on("shardResumed", () => {
+  onDiscordReconnected(DiscordClient);
 });
 
 DiscordClient.on("message", (message) => {

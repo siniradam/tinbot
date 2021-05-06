@@ -22,6 +22,7 @@ Tinbot replies your chat commands.
 - 🤨 !hearthstone - Hearthstone
 - 🤨 !sc2 - StarCraft2
 - 🤨 !igd - Internet Game Database
+- ✅ !coin - Check coin price (bitcoin, dogecoin, ethereum ...) type full name no-space
 
 ### Legends;
 - ✅ = Completed
@@ -34,10 +35,16 @@ Tinbot replies your chat commands.
 - psn
 - steam
 
-
+### Possible features
+- 🤨 Telegram integration
 
 ## Todo
-- Cache check.
+- Cache control
+- Rate limit
+- Disabling features by channel/server
+- Description required for Environment file
+- DICE NaN Fix
+- Reply with Apex error message {Error: 'Your request has been declined because of server load issue, Origin refusing the connection or a wrong username.'}
 
 ---
 

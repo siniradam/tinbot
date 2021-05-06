@@ -68,6 +68,8 @@ const getInfo = (endpoint, params, cb) => {
  * @description User ID and links
  */
 function getPlayerID(platform, playerName, cb) {
+  if (!playerName) return;
+
   let endpoint = `${platform}/players`; //?filter[playerNames]=${playerName}
   getInfo(endpoint, { "filter[playerNames]": playerName }, cb);
 }
@@ -109,6 +111,8 @@ function rankStats(platform, player, seasonId, cb) {
  * @description Lifetime stats for a player
  */
 function lifteTimeStats(platform, player, cb) {
+  if (!platform || !player) return;
+
   let gamepad = platform == "steam" ? false : true;
 
   const getStats = (playerId) => {
