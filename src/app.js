@@ -41,8 +41,8 @@ const options = {
     secure: true,
   },
   identity: {
-    username: process.env.USERNAME,
-    password: `oauth:${process.env.TOKEN}`,
+    username: process.env.TWITCH_USERNAME,
+    password: `oauth:${process.env.TWITCH_TOKEN}`,
   },
   channels: process.env.TWITCH_CHANNELS.split(","),
 };

@@ -1,10 +1,18 @@
 exports.reply = (client, channel, message) => {
-  if (client.say) {
-    //Twitch
-    client.say(channel, message);
-  } else if (client.reply) {
-    //Discord
-    const regex = /([@#][\w_-]+)/;
-    client.reply(message.replace(regex, "").trim());
+  try {
+    if (message) {
+      if (client.say) {
+        //Twitch
+        if (message.startsWith()) client.say(channel, message);
+      } else if (client.reply) {
+        //Discord
+        const regex = /([@#][\w_-]+)/;
+        client.reply(message.replace(regex, "").trim());
+      }
+    }
+  } catch (error) {
+    console.log(" ===== Reply Error ===== ");
+    console.log(message);
+    console.log(error);
   }
 };

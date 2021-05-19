@@ -13,7 +13,7 @@ const S = {
 const sentences = {
   en: {
     host: `Thank you @variable1 for the host of variable2!`,
-    raid: `Thank you @variable for the raid of variable2!`,
+    raid: `Thank you @variable1 for the raid of variable2!`,
     subscribe: `Thank you @variable1 for subscribing!`,
     cheer: `Thank you @variable1 for the variable2 bits!`,
     giftUpgrade: `Thank you @variable1 for continuing your gifted sub!`,
@@ -24,7 +24,7 @@ const sentences = {
   },
   tr: {
     host: `Getirdigin variable2 kisi icin tesekkurler @variable1!`,
-    raid: `variable2 Kisi ile yaptigin baskin isin tesekkurler @variable for!`,
+    raid: `variable2 Kisi ile yaptigin baskin isin tesekkurler @variable1!`,
     subscribe: `Abone oldugun icin tesekkurler @variable1!`,
     cheer: `Gonderdigin variable2 bit icin tesekkurler @variable1`,
     giftUpgrade: `Aboneliginin devami icin tesekkurler @variable1`,
@@ -69,6 +69,7 @@ exports.onHostedHandler = (client, channel, username, viewers, autohost) => {
 };
 
 exports.onRaidedHandler = (client, channel, username, viewers) => {
+  //TwitchClient, channel, username, viewers
   let m = getMessage(channel, S.RAID, username, viewers);
   client.say(channel, m);
 };
