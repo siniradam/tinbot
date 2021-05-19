@@ -67,9 +67,10 @@ TwitchClient.on("message", (channel, tags, message, self) => {
     channel,
     {
       ...tags,
-      isadmin: tags.badges.broadcaster ? true : false,
+      isadmin: tags.badges?.broadcaster ? true : false,
       servername: channel.replace("#", ""),
       serverid: tags["room-id"],
+      platform: "twitch",
     },
     message,
     self
@@ -182,6 +183,7 @@ DiscordClient.on("message", (message) => {
       servername: message.channel.guild.name,
       serverid: message.channel.guild.id,
       isadmin: message.guild.ownerID === message.author.id,
+      platform: "discord",
     },
     message.content,
     message.author.bot
