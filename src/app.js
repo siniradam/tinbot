@@ -162,7 +162,7 @@ DiscordClient.on("shardResumed", () => {
 DiscordClient.on("message", (message) => {
   messageHandler(
     message,
-    message.channel.general,
+    message.channel.name,
     {
       username: message.author.username,
       bot: message.author.bot,
