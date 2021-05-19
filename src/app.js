@@ -62,7 +62,17 @@ TwitchClient.on("connected", (address, port) => {
 
 /* Twitch Message Handling. */
 TwitchClient.on("message", (channel, tags, message, self) => {
-  messageHandler(TwitchClient, channel, tags, message, self);
+  messageHandler(
+    TwitchClient,
+    channel,
+    {
+      ...tags,
+      isadmin: tags.badges.broadcaster ? true : false,
+      servername: channel.replace("#", ""),
+    },
+    message,
+    self
+  );
 });
 
 /* Twitch EVENTS */
@@ -168,6 +178,9 @@ DiscordClient.on("message", (message) => {
       bot: message.author.bot,
       "display-name": message.author.username,
       type: message.type,
+      servername: message.channel.guild.name,
+      serverid: message.channel.guild.id,
+      isadmin: message.guild.ownerID === message.author.id,
     },
     message.content,
     message.author.bot
