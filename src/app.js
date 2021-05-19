@@ -69,6 +69,7 @@ TwitchClient.on("message", (channel, tags, message, self) => {
       ...tags,
       isadmin: tags.badges.broadcaster ? true : false,
       servername: channel.replace("#", ""),
+      serverid: tags["room-id"],
     },
     message,
     self
