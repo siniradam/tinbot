@@ -56,7 +56,7 @@ function getMessage(channel, sentence, var1, var2, var3) {
 }
 
 exports.onDisconnectedHandler = (reason) => {
-  console.log(`Disconnected: ${reason}`);
+  console.log(`Disconnected from Twitch: ${reason}`);
 };
 
 exports.onConnectedHandler = (address, port) => {
@@ -143,19 +143,17 @@ exports.subGiftHandler = (
 // };
 
 exports.onDiscordConnect = (DiscordClient) => {
-  console.log(
-    `${DiscordClient.user.username} connected to Discord`.brightMagenta
-  );
+  console.log(`${DiscordClient.user.username} connected to Discord`.blue);
 };
 
 exports.onDiscordConnectionError = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} Connection error`.brightMagenta);
+  console.log(`${DiscordClient.user.username} Connection error`.blue);
 };
 
 exports.onDiscordReconnecting = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} reconnecting`.brightMagenta);
+  console.log(`${DiscordClient.user.username} reconnecting`.blue);
 };
 
 exports.onDiscordReconnected = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} reconnected`.brightMagenta);
+  console.log(`${DiscordClient.user.username} reconnected`.blue);
 };
