@@ -40,7 +40,7 @@ function getMessage(channel, sentence, var1, var2, var3) {
   let toSend = sentences[lang][sentence];
   if (!toSend) {
     console.log(lang, sentence);
-    return;
+    return "";
   }
 
   if (var1) {
@@ -103,7 +103,7 @@ exports.onGiftPaidUpgradeHandler = (
 };
 
 exports.onHostingHandler = (client, channel, target, viewers) => {
-  let m = getMessage(channel, target, viewers);
+  let m = getMessage(channel, S.HOSTING, target, viewers);
   client.say(channel, m);
 };
 

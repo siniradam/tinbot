@@ -1,6 +1,6 @@
 exports.reply = (client, channel, message) => {
   try {
-    if (message) {
+    if (typeof message==="string") {
       if (client.say) {
         //Twitch
         client.say(channel, message);
