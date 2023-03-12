@@ -56,11 +56,16 @@ function getMessage(channel, sentence, var1, var2, var3) {
 }
 
 exports.onDisconnectedHandler = (reason) => {
-  console.log(`Disconnected from Twitch: ${reason}`);
+  console.log(
+    `Disconnected from Twitch: ${reason}` + ` ${new Date().toLocaleString()}`
+  );
 };
 
 exports.onConnectedHandler = (address, port) => {
-  console.log(`Tinbot Connected to Twitch on ${address}:${port}`.magenta);
+  console.log(
+    `Tinbot Connected to Twitch on ${address}:${port}`.magenta +
+      ` ${new Date().toLocaleString()}`
+  );
 };
 
 exports.onHostedHandler = (client, channel, username, viewers, autohost) => {
@@ -143,17 +148,32 @@ exports.subGiftHandler = (
 // };
 
 exports.onDiscordConnect = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} connected to Discord`.blue);
+  var today = new Date();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  console.log(
+    `${DiscordClient.user.username} connected to Discord`.blue +
+      ` ${new Date().toLocaleString()}`
+  );
 };
 
 exports.onDiscordConnectionError = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} Connection error`.blue);
+  console.log(
+    `${DiscordClient.user.username} Connection error`.blue +
+      ` ${new Date().toLocaleString()}`
+  );
 };
 
 exports.onDiscordReconnecting = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} reconnecting`.blue);
+  console.log(
+    `${DiscordClient.user.username} reconnecting`.blue +
+      ` ${new Date().toLocaleString()}`
+  );
 };
 
 exports.onDiscordReconnected = (DiscordClient) => {
-  console.log(`${DiscordClient.user.username} reconnected`.blue);
+  console.log(
+    `${DiscordClient.user.username} reconnected`.blue +
+      ` ${new Date().toLocaleString()}`
+  );
 };

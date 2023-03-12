@@ -7,6 +7,9 @@ const { reply } = require("./utils/reply");
 const { fortnite } = require("./platforms/fortnite");
 const { coin } = require("./platforms/coinmarketcap");
 
+//
+const { setChannel } = require("./utils/botDefiner");
+
 exports.messageHandler = (client, channel, tags, message, self) => {
   if (self) return;
 
@@ -66,6 +69,10 @@ exports.messageHandler = (client, channel, tags, message, self) => {
         );
         break;
 
+      case "setlang":
+        setChannel({ username: tags.username, channel, client }, tags, param1);
+        break;
+
       default:
         break;
     }
@@ -85,6 +92,9 @@ exports.messageHandler = (client, channel, tags, message, self) => {
         client.react("👋");
       }
       //
+    } else if ("whereami") {
+      // console.log(tags.isadmin);
+      // console.log(tags.servername);
     }
   }
 };

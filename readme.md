@@ -44,8 +44,14 @@ Tinbot replies your chat commands.
 - Rate limit
 - Disabling features by channel/server
 - Description required for Environment file
-- DICE NaN Fix
+- ~~DICE NaN Fix~~
 - Reply with Apex error message {Error: 'Your request has been declined because of server load issue, Origin refusing the connection or a wrong username.'}
+- ? ADD to Server Shortcut
+- Set lang should only update server language.
+- Set Lang UPDATE on second command.
+- Check language from db for command answers
+- db auto answers
+- 
 
 ---
 

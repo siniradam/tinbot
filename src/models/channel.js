@@ -5,9 +5,11 @@ const ChannelDataSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  channel: String,
-  command: String,
-  response: String,
+  channelname: String,
+  channelid: {
+    type: String,
+    unique: true,
+  },
   language: String,
 });
 
